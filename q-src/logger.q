@@ -16,7 +16,7 @@ pctl:{[x;p] sx:asc x; sx floor p*(count sx)-1}
 printStats:{
   if[count times>0;
     ps: 0.5 0.9 0.99 0.999 0.9999;
-    vals: {times[floor x * 100]} each ps;
+    vals: {pctl[times[`latency];x]} each ps;
     {-1 "p", string[(x 0) * 100], ": ", string[(x 1)];} each flip (ps; vals)
     if[x;
         fl: hopen ":../results/results.txt";

@@ -1,6 +1,6 @@
 ## Design
 
-![design](static/imgs/kdb-experiment.png)
+![design](static/imgs/kdb-design.svg)
 
 Amazon setup details:
 
