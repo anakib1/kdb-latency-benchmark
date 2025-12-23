@@ -50,28 +50,24 @@ Default settings are:
 - Unix sockets enabled
 - No affinity for processes
 
-| Throughput | 50%      | 90%      | 99%      | 99.9     | 99.99%   |
-|------------|----------|----------|----------|----------|----------|
-| 20000      | 34       | 36       | 40       | 44       | 53       |
-| 40000      | 34       | 35       | 39       | 42       | 46       |
-| 60000      | 27       | 32       | 35       | 40       | 109      |
-| 80000      | 27       | 33       | 35       | 43       | 9390     |
-| 120000     | overflow | overflow | overflow | overflow | overflow |
+| Throughput | 50% | 90% | 99% | 99.9 | 99.99    |
+|------------|-----|-----|-----|------|----------|
+| 10000      | 34  | 35  | 38  | 38   | 45       |
+| 20000      | 34  | 39  | 42  | 47   | 54       |
+| 40000      | 34  | 35  | 39  | 42   | 45       |
+| 60000      | 27  | 32  | 35  | 43   | 262      |
+| 80000      | -   | -   | -   | -    | overflow |
+
 
 ## Detailed results
 
 
-**100 req/s**
+**40K req/s**
 
-![timeline](imgs/aws_100_tl.png)
-![hist](imgs/aws_100_hist.png)
+![timeline](static/imgs/40-latency.png)
+![hist](static/imgs/40-timeline.png)
 
-**10K req/s**
+**60K req/s**
 
-![timeline](imgs/aws_10K_tl.png)
-![hist](imgs/aws_10K_hist.png)
-
-**20K req/s**
-
-![timeline](imgs/aws_20K_tl.png)
-![hist](imgs/aws_20K_hist.png)
+![timeline](static/imgs/60-latency.png)
+![hist](static/imgs/60-timeline.png)
