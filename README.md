@@ -43,20 +43,21 @@ Experiments are controlled by `THROUGHPUT` and `DURATION` env variables.
 
 ## Results
 
-All latency values are reported in microseconds.
 
 Default settings are:
 - No WAL
 - Unix sockets enabled
 - No affinity for processes
 
-| Throughput | 50% | 90% | 99% | 99.9 | 99.99    |
-|------------|-----|-----|-----|------|----------|
-| 10000      | 34  | 35  | 38  | 38   | 45       |
-| 20000      | 34  | 39  | 42  | 47   | 54       |
-| 40000      | 34  | 35  | 39  | 42   | 45       |
-| 60000      | 27  | 32  | 35  | 43   | 262      |
-| 80000      | -   | -   | -   | -    | overflow |
+All latency values are reported in microseconds.
+
+| Throughput (trades/s) | P50 (µs) | P90 (µs) | P99 (µs) | P99.9 (µs) | P99.99 (µs) |
+|----------------------:|---------:|---------:|---------:|-----------:|------------:|
+|                 10000 |       34 |       35 |       38 |         38 |          45 |
+|                 20000 |       34 |       39 |       42 |         47 |          54 |
+|                 40000 |       34 |       35 |       39 |         42 |          45 |
+|                 60000 |       27 |       32 |       35 |         43 |         262 |
+|                 80000 |        - |        - |        - |          - |    overflow |
 
 
 ## Detailed results
