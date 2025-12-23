@@ -1,6 +1,6 @@
 ## Design
 
-![design](imgs/design.png)
+![design](static/imgs/kdb-experiment.png)
 
 Amazon setup details:
 
@@ -38,10 +38,6 @@ Experiments are controlled by `THROUGHPUT` and `DURATION` env variables.
     - `cd py-src`
     - run `draw.py`
     - It will produce `results` folder with histograms of experiment based on `times.csv` file
-
-## Expertiment diagram
-
-![](static/imgs/kdb-experiment.png)
 
 ## Results
 
