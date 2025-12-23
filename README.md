@@ -16,6 +16,8 @@ Amazon setup details:
 ### Prerequisites
 - Python 3.9 for charts (`python` alias)
     - Run `python -m venv venv` inside py-src directory
+    - `source venv/bin/activate`
+    - `pip install -r requirements.txt`
 - KDB-X installed (`q` alias)
 
 Experiments are controlled by `THROUGHPUT` and `DURATION` env variables.
