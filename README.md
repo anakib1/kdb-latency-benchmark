@@ -14,7 +14,8 @@ Amazon setup details:
 ## Instruction
 
 ### Prerequisites
-- Python 3.9 for charts (`python3` alias)
+- Python 3.9 for charts (`python` alias)
+    - Run `python -m venv venv` inside py-src directory
 - KDB-X installed (`q` alias)
 
 Experiments are controlled by `THROUGHPUT` and `DURATION` env variables.
@@ -38,6 +39,9 @@ Experiments are controlled by `THROUGHPUT` and `DURATION` env variables.
     - run `draw.py`
     - It will produce `results` folder with histograms of experiment based on `times.csv` file
 
+## Expertiment diagram
+
+![](static/imgs/kdb-experiment.png)
 
 ## Results
 
@@ -55,31 +59,9 @@ Default settings are:
 | 60000      | 27       | 32       | 35       | 40       | 109      |
 | 80000      | 27       | 33       | 35       | 43       | 9390     |
 | 120000     | overflow | overflow | overflow | overflow | overflow |
-| 160000     | overflow | overflow | overflow | overflow | overflow |
-
-
-
 
 ## Detailed results
 
-### Mac
-
-**100 req/s**
-
-![timeline](imgs/mac_100_tl.png)
-![hist](imgs/mac_100_hist.png)
-
-**10K req/s**
-
-![timeline](imgs/mac_10K_tl.png)
-![hist](imgs/mac_10K_hist.png)
-
-**20K req/s**
-
-![timeline](imgs/mac_20K_tl.png)
-![hist](imgs/mac_20K_hist.png)
-
-### Amazon
 
 **100 req/s**
 
