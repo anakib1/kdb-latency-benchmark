@@ -10,7 +10,7 @@ pctl:{[x;p] sx:asc x; sx floor p*(count sx)-1}
   ts: first msg;
   lat: last msg;
   `times upsert (ts; lat);
-  if[(count times)=TOTAL_BARS; exit 0;]
+  if[(count times)=TOTAL_MSGS; exit 0;]
   }
 
 printStats:{

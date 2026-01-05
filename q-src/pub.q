@@ -7,7 +7,7 @@ h:hopen `:unix://5010
 out "Writing Trades";
 
 ts:.z.n;
-do[TOTAL_BARS;
+do[TOTAL_MSGS;
     batch_data:(ts;`$("SYMBOL", string rand 1000); rand 1000000000; rand 100f;rand 100f);
     ts:ts+("j"$INTERVAL);
     neg[h](".u.upd";`trades;batch_data);

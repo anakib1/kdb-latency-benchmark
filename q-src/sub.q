@@ -14,7 +14,7 @@ upd: {
     if[logger<>-1; neg[logger](".upd";(.z.P,d));];
     st +: count y;
     if[0=st mod 2000000; show st;];
-    if[st >= TOTAL_BARS; out "Elapsed: ",string[.z.P-.stTime],". Rate: ",string[`long$TOTAL_BARS*0D00:00:01%(.z.P-.stTime)]," ts/sec"; exit 0;];
+    if[st >= TOTAL_MSGS; out "Elapsed: ",string[.z.P-.stTime],". Rate: ",string[`long$TOTAL_MSGS*0D00:00:01%(.z.P-.stTime)]," ts/sec"; exit 0;];
     if[null .stTime; .stTime:.z.P];
     };
 
