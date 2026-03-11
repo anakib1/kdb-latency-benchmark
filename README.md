@@ -1,6 +1,21 @@
 ## Design
 
+The experiment is measuring latency between producer and consumer on same physical machine for small, irregular in time messages - trades in this example. This could be applicable in designing tick-to-trade applications and strategies requiring immediate feedback on new observed trade.
+
+We are using KDB architecture recommended by official documentation with publisher, tickerplant and subscriber with addition of separate logger for measuring experiment performance as it was found benefitial to separate this process from the main one.
+
+### Details
+
+Experiment is designed to be as simple as possible.
+- Publisher is submitting randomly created messages while maintaining the desired throughput with busy-waiting between subsequent messages scheduled send time.
+- Ticker plant is unaltered tick.q from official KDB documentation used without write ahead log for maximum performance.
+- Subscriber is responsible only for calculating difference between message original time and current time and asynchronously submitting this difference to logger.
+- Logger is maintaining histogram of latencies.
+
+
 ![design](static/imgs/kdb-design.svg)
+
+### Setup
 
 Amazon setup details:
 
@@ -72,3 +87,31 @@ All latency values are reported in microseconds.
 
 ![timeline](static/imgs/60-latency.png)
 ![hist](static/imgs/60-timeline.png)
+
+## Results
+
+![aggregated](static/imgs/aggregated.png)
+
+**We find that KDB processes in the experiment overflow on 80 000 msg/second suggesting that this throughput is bound for adequate latencies, while exhibiting fairly uniform latencies of 30-40 microseconds for any throughput lower than 80 000**.
+
+KDB official documentation suggests much higher possible throughput of several millions messages per second, however this is achieved by explicit or implicit batching, which is unapplicable for the scenario investigated here (minimum latency tick-to-trade or similar applications).
+
+### Timebase comparison
+
+Detailed experiment against timebase could be found here: [TBD]
+
+ In the scenario of pure message broker, KDB seems inferior to other applications such as Timebase, which results are included below:
+
+| Throughput (msg/s) | P50(us) | P90(us) | P99(us) | P999(us) | P9999(us) |
+|--------------------|---------|---------|---------|----------|-----------|
+| 10000              | 0.46    | 0.64    | 2.32    | 3.85     | 269.57    |
+| 20000              | 0.40    | 0.58    | 1.82    | 2.92     | 38.37     |
+| 40000              | 0.39    | 0.56    | 1.41    | 2.37     | 4.77      |
+| 60000              | 0.41    | 0.59    | 0.69    | 3.37     | 12.58     |
+| 80000              | 0.41    | 0.59    | 0.67    | 2.00     | 3.80      |
+| 100000             | 0.41    | 0.60    | 0.66    | 1.80     | 2.66      |
+
+**Timebase exhibits uniform latencies in single-digit microseconds up to 100 000 messages/second.**
+
+
+![kdb-vs-tb](static/imgs/kdb-vs-tb.png)
